@@ -5,10 +5,12 @@ import { useSelector } from "react-redux";
 import { getAllMovies, getAllShows } from "../../features/movies/movieSlice";
 import MovieCard from "../MovieCard/MovieCard";
 import "./MovieListing.scss";
+import { Bars } from "react-loader-spinner";
 
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
   const shows = useSelector(getAllShows);
+  const loading = useSelector((state) => state.movies.loading);
 
   let renderMovies,
     renderShows = "";
@@ -33,18 +35,26 @@ const MovieListing = () => {
 
   return (
     <div className="movie-wrapper">
-      <div className="movie-list">
-        <h2>Movies</h2>
-        <div className="movie-container">
-          <Slider {...Settings}>{renderMovies}</Slider>
+      {loading ? (
+        <div className="loader">
+          <Bars color="#00BFFF" height={80} width={80} />
         </div>
-      </div>
-      <div className="show-list">
-        <h2>Shows</h2>
-        <div className="movie-container">
-          <Slider {...Settings}>{renderShows}</Slider>
-        </div>
-      </div>
+      ) : (
+        <>
+          <div className="movie-list">
+            <h2>Movies</h2>
+            <div className="movie-container">
+              <Slider {...Settings}>{renderMovies}</Slider>
+            </div>
+          </div>
+          <div className="show-list">
+            <h2>Shows</h2>
+            <div className="movie-container">
+              <Slider {...Settings}>{renderShows}</Slider>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

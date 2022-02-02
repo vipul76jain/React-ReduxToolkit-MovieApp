@@ -34,6 +34,7 @@ const initialState = {
   movies: {},
   shows: {},
   selectedMovieOrShow: {},
+  loading: false,
 };
 
 const movieSclice = createSlice({
@@ -46,18 +47,18 @@ const movieSclice = createSlice({
   },
   extraReducers: {
     [fetchAsyncMovies.pending]: (state, { payload }) => {
-      console.log("pending");
+      return { ...state, loading: true };
     },
     [fetchAsyncMovies.fulfilled]: (state, { payload }) => {
       console.log("fullfiled");
-      return { ...state, movies: payload };
+      return { ...state, movies: payload, loading: false };
     },
     [fetchAsyncMovies.rejected]: () => {
       console.log("rejected");
     },
     [fetchAsyncShows.fulfilled]: (state, { payload }) => {
       console.log("fullfiled");
-      return { ...state, shows: payload };
+      return { ...state, shows: payload, loading: false };
     },
     [fetchAsyncMovieOrShowDetail.fulfilled]: (state, { payload }) => {
       console.log("fullfiled");
