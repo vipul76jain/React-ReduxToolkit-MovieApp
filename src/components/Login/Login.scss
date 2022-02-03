@@ -1,0 +1,31 @@
+.login-container {
+  min-height: 76vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .form {
+    width: 25%;
+  }
+  input {
+    padding: 5px 8px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    outline: none;
+    width: 100%;
+  }
+}
+.login-header {
+  margin-bottom: 40px;
+}
+.login-btn {
+  text-align: center;
+  margin-top: 20px;
+  button {
+    padding: 5px 20px;
+    border-radius: 15px;
+    border: none;
+  }
+}

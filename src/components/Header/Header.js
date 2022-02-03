@@ -10,6 +10,7 @@ import "./Header.scss";
 
 const Header = () => {
   const [term, setTerm] = useState("");
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
@@ -38,6 +39,20 @@ const Header = () => {
       </div>
       <div className="user-image">
         <img src={user} alt="user" />
+        <div class="menu-item">
+          <i
+            className={!open ? "fas fa-caret-down" : "fas fa-caret-up"}
+            style={{ color: "#fff" }}
+            onClick={() => setOpen(!open)}
+          ></i>
+        </div>
+        {open && (
+          <ul className="dropdown-menu">
+            <li onClick={() => setOpen(!open)}>Logout</li>
+            <li onClick={() => setOpen(!open)}>Link 1</li>
+            <li onClick={() => setOpen(!open)}>Link 1</li>
+          </ul>
+        )}
       </div>
     </div>
   );

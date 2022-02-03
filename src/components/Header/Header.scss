@@ -17,10 +17,34 @@
   font-size: 20px;
   font-weight: 600;
 }
-.user-image,
-.user-image img {
-  width: 38px;
-  height: 38px;
+.user-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 38px;
+    height: 38px;
+  }
+  .menu-item {
+    margin-left: 20px;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 65px;
+    list-style: none;
+    background: $secondary-color;
+    box-shadow: 0 4px 8px darkslategrey;
+    li {
+      color: #fff;
+      padding: 5px 40px 5px 10px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    li:hover {
+      background: lightblue;
+      color: black;
+    }
+  }
 }
 .search {
   width: 50%;
